@@ -535,8 +535,9 @@
   }
 
   /* ── REVEAL ── */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s ease; }
+  .js-loaded .reveal { opacity: 0; transform: translateY(30px); }
+  .js-loaded .reveal.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 680px) {
     .nav-links { display: none; }
@@ -570,7 +571,7 @@
   <p class="hero-sub">Building robust ETL pipelines, streaming data solutions, and automated validation workflows that power production systems at scale.</p>
   <div class="hero-cta">
     <a href="#experience" class="btn-primary">View My Work</a>
-    <a href="Kaman_Yu_Resume_DE.pdf" download="Kaman_Yu_Resume_DE.pdf" class="btn-download">⬇ Download Resume</a>
+    <a href="Kaman_Yu_Resume_DE.pdf" download="Kaman_Yu_Resume_DE.pdf" class="btn-secondary">⬇ Download Resume</a>
     <a href="#contact" class="btn-secondary">Get in Touch</a>
   </div>
   <div class="hero-scroll">
@@ -806,15 +807,17 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Only hide elements for animation once JS is confirmed running
+  document.body.classList.add('js-loaded');
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 55);
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0, rootMargin: "0px 0px -30px 0px" });
   reveals.forEach(el => observer.observe(el));
 
   const sections = document.querySelectorAll('section[id]');
