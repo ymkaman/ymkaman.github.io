@@ -492,7 +492,7 @@
 
   .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 14px;
   }
 
@@ -521,7 +521,8 @@
     flex-shrink: 0;
   }
   .contact-label { font-size: 11px; color: var(--gray); font-weight: 500; margin-bottom: 3px; letter-spacing: 0.03em; }
-  .contact-val { font-size: 14px; font-weight: 600; color: var(--black); }
+  .contact-val { font-size: 14px; font-weight: 600; color: var(--black); word-break: break-word; overflow-wrap: break-word; }
+  .contact-card > div:last-child { min-width: 0; flex: 1; }
 
   /* ── FOOTER ── */
   footer {
@@ -768,7 +769,7 @@
     <p class="section-sub reveal">Open to new opportunities, collaborations, and conversations about data infrastructure and engineering.</p>
 
     <div class="contact-grid">
-      <a href="kamanyu.39@gmail.com" class="contact-card reveal">
+      <a href="mailto:kamanyu.39@gmail.com" class="contact-card reveal">
         <div class="contact-icon">✉️</div>
         <div>
           <div class="contact-label">Email</div>
